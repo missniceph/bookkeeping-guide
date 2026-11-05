@@ -404,9 +404,15 @@
       rows[current] = null; feedback[current] = '';
       render();
     } else if (el.id === 'resetLab') {
-      var msg = B.lang() === 'fil' ? 'Buburahin nito ang lahat ng sagot sa lab. Ituloy?' : 'This clears all your lab answers. Continue?';
-      if (window.confirm(msg)) {
+      // Two-tap confirmation built into the page (browser confirm dialogs are blocked in some viewers)
+      if (el.getAttribute('data-armed') === '1') {
         done = {}; rows = {}; feedback = {}; save(); current = TX[0].id; render(); focusCard();
+      } else {
+        el.setAttribute('data-armed', '1');
+        el.innerHTML = b('Tap again to clear all your lab answers', 'Pindutin ulit para burahin lahat ng sagot sa lab');
+        setTimeout(function () {
+          if (document.body.contains(el)) { el.removeAttribute('data-armed'); el.innerHTML = b('Start the lab over', 'Ulitin ang lab mula simula'); }
+        }, 5000);
       }
     }
   });
