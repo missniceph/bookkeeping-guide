@@ -8,6 +8,29 @@ An interactive English/Filipino guide that teaches self-employed Filipinos and m
 
 ---
 
+## What’s here and how to update it
+
+**What’s here:** a home page, 9 short modules, a 404 (“page not found”) page, and the shared files that every page uses. Every page has an EN/FIL switch, light/dark mode, a progress tracker, the disclaimer, “As of November 2026”, and a footer link to instagram.com/missniceph.
+
+**Most common updates:**
+
+| I want to… | Edit this |
+|---|---|
+| Change a sentence on a page | That page’s `.html` file. Change the `lang="en"` **and** `lang="fil"` versions (see “How to edit text and translations” below). |
+| Fill in a `[To confirm]` item | Search for `[To confirm]` — see the table further down for where each one is. |
+| Change the disclaimer, the “As of” date, or the Instagram link | `assets/js/app.js`, in the part called `buildFooter`. |
+| Rename a module | The `MODULES` list near the top of `assets/js/app.js` **and** the `<h1>` and `<title>` of that module’s page. |
+| Add or change a practice transaction | `assets/js/lab-data.js` (see “How to add or change practice transactions”). |
+| Change a color | The top of `assets/css/style.css` (light colors first, dark-mode colors right after). |
+| Change the link-preview text for a page | That page’s `<title>`, `<meta name="description">` and the matching `og:title` / `og:description` lines in its `<head>`. |
+| Change the link-preview picture | Edit `assets/img/share-card.svg` (it’s plain text), then make a new 1200×630 PNG from it and save it as `assets/img/share-card.png` (any “SVG to PNG” tool works, or ask Claude). |
+
+**Things that depend on the web address.** The link previews and the 404 page assume the site lives at `https://missniceph.github.io/bookkeeping-guide/`. If you rename the repository or use your own domain, search all files for `missniceph.github.io/bookkeeping-guide` and `/bookkeeping-guide/` and update them.
+
+**After any change**, open the page on your phone, tap EN and FIL, and switch light/dark once to check it still looks right.
+
+---
+
 ## The files
 
 | File | What it is |
@@ -22,6 +45,9 @@ An interactive English/Filipino guide that teaches self-employed Filipinos and m
 | `keeping-records.html` | Module 7: Keeping records (has the file-name maker) |
 | `glossary.html` | Module 8: Glossary (30 terms) |
 | `checklists.html` | Module 9: Printable checklists |
+| `404.html` | “Page not found” page that GitHub Pages shows for broken links |
+| `favicon.svg`, `apple-touch-icon.png` | Browser-tab icon and phone home-screen icon |
+| `assets/img/share-card.svg` / `.png` | Link-preview picture for Facebook, Messenger, X, etc. (the SVG is the editable source) |
 | `assets/css/style.css` | All colors and layout (light and dark mode) |
 | `assets/js/app.js` | Shared parts: header, EN/FIL switch, dark mode, progress, Back/Next, **disclaimer footer** |
 | `assets/js/lab-data.js` | **The practice lab’s transactions and answer key** |
