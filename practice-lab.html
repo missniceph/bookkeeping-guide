@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Practice lab · Bookkeeping for First-Timers</title>
+<meta name="description" content="Record 10 transactions for Ana, a fictional freelance graphic designer, and watch them post to the General Journal and ledger.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect x='7' y='4' width='24' height='32' rx='4' fill='%230d7068'/%3E%3Ccircle cx='29' cy='29' r='8' fill='%23f2b53a'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="assets/js/app.js"></script>
+</head>
+<body>
+<main id="main" class="wrap wide">
+
+  <h1><span lang="en">Practice lab</span><span lang="fil">Practice lab</span></h1>
+
+  <div class="card" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+    <!-- Ana: simple shapes only -->
+    <svg viewBox="0 0 100 100" width="84" height="84" role="img" aria-label="Ana, a fictional freelance designer">
+      <circle cx="50" cy="50" r="48" fill="var(--primary-soft)"/>
+      <path d="M22 96 Q50 62 78 96 Z" fill="var(--coral)"/>
+      <circle cx="50" cy="42" r="18" fill="#c98b5e"/>
+      <path d="M31 44 Q30 20 50 20 Q70 20 69 44 Q66 30 50 30 Q36 30 31 44 Z" fill="#2b1d16"/>
+      <circle cx="43" cy="44" r="2" fill="#2b1d16"/><circle cx="57" cy="44" r="2" fill="#2b1d16"/>
+      <path d="M44 51 Q50 55 56 51" stroke="#2b1d16" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <rect x="62" y="70" width="26" height="18" rx="3" fill="var(--surface)" stroke="var(--primary)" stroke-width="3"/>
+    </svg>
+    <div style="flex:1;min-width:220px">
+      <p style="margin:0 0 6px" lang="en"><strong>Meet Ana</strong> — a <strong>fictional</strong> freelance graphic designer. She is <strong>non-VAT</strong>, uses the <strong>cash basis</strong>, and this is her November 2026. All names and amounts are made up for practice.</p>
+      <p style="margin:0 0 6px" lang="fil"><strong>Kilalanin si Ana</strong> — isang <strong>kunwaring</strong> freelance graphic designer. <strong>Non-VAT</strong> siya, <strong>cash basis</strong> ang gamit, at ito ang Nobyembre 2026 niya. Gawa-gawa lang ang lahat ng pangalan at halaga para sa practice.</p>
+      <p style="margin:0" lang="en"><small>For each transaction: choose the accounts, choose Debit or Credit, type the amount, then check. Your answers stay on this page.</small></p>
+      <p style="margin:0" lang="fil"><small>Sa bawat transaksyon: pumili ng account, pumili ng Debit o Credit, i-type ang halaga, tapos i-check. Nasa page lang na ito ang mga sagot mo.</small></p>
+    </div>
+  </div>
+
+  <details class="card">
+    <summary><strong lang="en">Cheat sheet: which side makes an account go UP?</strong><strong lang="fil">Cheat sheet: saang side TUMATAAS ang account?</strong></summary>
+    <p style="margin-top:10px" lang="en"><span class="dr"><strong>Debit</strong></span> — Drawings, Expenses, Assets (Cash, Equipment, Creditable Withholding Tax). <span class="cr"><strong>Credit</strong></span> — Liabilities, Owner’s Capital, Income. The opposite side makes them go down.</p>
+    <p style="margin-top:10px" lang="fil"><span class="dr"><strong>Debit</strong></span> — Drawings, Expenses, Assets (Cash, Equipment, Creditable Withholding Tax). <span class="cr"><strong>Credit</strong></span> — Liabilities, Owner’s Capital, Income. Sa kabilang side naman sila bumababa.</p>
+  </details>
+
+  <noscript><p class="box warn">The practice lab needs JavaScript turned on. / Kailangan ng JavaScript para gumana ang practice lab.</p></noscript>
+  <div id="lab" aria-live="polite"></div>
+
+  <aside class="box why">
+    <h2>💡 <span lang="en">Why it matters</span><span lang="fil">Bakit ito mahalaga?</span></h2>
+    <ul lang="en">
+      <li>Reading about debits and credits is one thing; doing ten entries makes it click.</li>
+      <li>You’ll see how one entry flows from the journal to the ledger to the month-end totals — the same path your real numbers take to your return.</li>
+    </ul>
+    <ul lang="fil">
+      <li>Iba ang nagbabasa lang tungkol sa debit at credit; kapag sampung entry na ang nagawa mo, magki-click na ito.</li>
+      <li>Makikita mo kung paano dumadaloy ang isang entry mula journal papuntang ledger papuntang month-end totals — parehong daan na tinatahak ng totoong numero mo papunta sa return.</li>
+    </ul>
+  </aside>
+  <aside class="box mistakes">
+    <h2>⚠️ <span lang="en">Common mistakes in this lab</span><span lang="fil">Mga karaniwang pagkakamali sa lab na ito</span></h2>
+    <ul lang="en">
+      <li>Treating Ana’s own ₱30,000 as income (it’s capital).</li>
+      <li>Treating the ₱12,000 tablet as an expense (it’s equipment).</li>
+      <li>Recording only ₱19,000 income from the client who withheld tax (income is ₱20,000).</li>
+      <li>Treating the ₱5,000 withdrawal as an expense (it’s drawings).</li>
+    </ul>
+    <ul lang="fil">
+      <li>Itinuring na kita ang sariling ₱30,000 ni Ana (capital iyon).</li>
+      <li>Itinuring na gastos ang ₱12,000 na tablet (equipment iyon).</li>
+      <li>₱19,000 lang ang ni-record na kita mula sa client na nagkaltas ng buwis (₱20,000 ang kita).</li>
+      <li>Itinuring na gastos ang ₱5,000 na kinuha ni Ana (drawings iyon).</li>
+    </ul>
+  </aside>
+
+</main>
+<script src="assets/js/lab-data.js"></script>
+<script src="assets/js/lab.js"></script>
+</body>
+</html>
