@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recording transactions · Bookkeeping for First-Timers</title>
+<meta name="description" content="Double-entry basics, debit and credit explained with everyday examples, and cash basis vs accrual.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect x='7' y='4' width='24' height='32' rx='4' fill='%230d7068'/%3E%3Ccircle cx='29' cy='29' r='8' fill='%23f2b53a'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="assets/js/app.js"></script>
+</head>
+<body>
+<main id="main" class="wrap">
+
+  <h1><span lang="en">Recording transactions</span><span lang="fil">Pag-record ng mga transaksyon</span></h1>
+  <p class="lead" lang="en">Debit and credit are the part everyone fears. Good news: it’s just a sorting rule. Learn one table and you’re set.</p>
+  <p class="lead" lang="fil">Ang debit at credit ang pinakakinatatakutan ng lahat. Good news: patakaran lang ito sa pag-aayos. Kabisaduhin ang isang table at ayos ka na.</p>
+
+  <h2><span lang="en">Double entry: every peso comes from somewhere and goes somewhere</span><span lang="fil">Double entry: bawat piso ay may pinanggalingan at pinuntahan</span></h2>
+  <p lang="en">When you pay your internet bill, two things happen at once: your cash goes <strong>down</strong>, and your internet expense goes <strong>up</strong>. Double-entry bookkeeping records <strong>both sides</strong> of every transaction. That’s why every entry touches <strong>at least two accounts</strong>, and why <strong>total debits always equal total credits</strong>.</p>
+  <p lang="fil">Kapag binayaran mo ang internet bill, dalawang bagay ang sabay na nangyayari: <strong>bumababa</strong> ang cash mo, at <strong>tumataas</strong> ang gastos mo sa internet. Sa double-entry bookkeeping, nire-record ang <strong>dalawang panig</strong> ng bawat transaksyon. Kaya bawat entry ay may <strong>hindi bababa sa dalawang account</strong>, at <strong>laging pantay ang kabuuang debit at kabuuang credit</strong>.</p>
+
+  <!-- Balance scale illustration -->
+  <svg viewBox="0 0 320 130" class="flow-ill" style="max-width:360px" role="img" aria-label="A balanced scale: debits on the left equal credits on the right">
+    <rect x="152" y="30" width="16" height="80" rx="4" fill="var(--muted)"/>
+    <rect x="110" y="108" width="100" height="12" rx="6" fill="var(--muted)"/>
+    <rect x="40" y="26" width="240" height="8" rx="4" fill="var(--text)"/>
+    <circle cx="160" cy="30" r="10" fill="var(--accent)"/>
+    <path d="M60 34 L35 78 H95 Z" fill="none" stroke="var(--primary)" stroke-width="3"/>
+    <path d="M260 34 L235 78 H295 Z" fill="none" stroke="var(--coral)" stroke-width="3"/>
+    <rect x="30" y="78" width="70" height="20" rx="10" fill="var(--primary)"/>
+    <rect x="230" y="78" width="70" height="20" rx="10" fill="var(--coral)"/>
+    <text x="65" y="92" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="800" fill="#fff">DEBIT</text>
+    <text x="265" y="92" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="800" fill="#fff">CREDIT</text>
+  </svg>
+
+  <h2><span lang="en">The five kinds of accounts</span><span lang="fil">Ang limang uri ng account</span></h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th><span lang="en">Type</span><span lang="fil">Uri</span></th><th><span lang="en">Meaning</span><span lang="fil">Kahulugan</span></th><th><span lang="en">Examples</span><span lang="fil">Halimbawa</span></th></tr></thead>
+    <tbody>
+      <tr><td><strong>Assets</strong></td><td><span lang="en">What the business owns</span><span lang="fil">Ari-arian ng negosyo</span></td><td>Cash, Equipment, Accounts Receivable</td></tr>
+      <tr><td><strong>Liabilities</strong></td><td><span lang="en">What the business owes</span><span lang="fil">Utang ng negosyo</span></td><td>Accounts Payable, Loans Payable</td></tr>
+      <tr><td><strong>Owner’s equity</strong></td><td><span lang="en">The owner’s stake: money put in, minus money taken out (drawings)</span><span lang="fil">Bahagi ng may-ari: perang ipinasok, bawas ang perang kinuha (drawings)</span></td><td>Owner’s Capital, Owner’s Drawings</td></tr>
+      <tr><td><strong>Income</strong></td><td><span lang="en">What you earn from your work or sales</span><span lang="fil">Kinikita mo mula sa trabaho o benta</span></td><td>Service Income, Sales</td></tr>
+      <tr><td><strong>Expenses</strong></td><td><span lang="en">Costs of running the business that get used up</span><span lang="fil">Gastos sa pagpapatakbo ng negosyo na nauubos</span></td><td>Internet, Rent, Supplies, Transportation</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2><span lang="en">Debit and credit: the one table to remember</span><span lang="fil">Debit at credit: ang isang table na dapat tandaan</span></h2>
+  <p lang="en"><strong>Debit</strong> just means the <strong>left</strong> column. <strong>Credit</strong> means the <strong>right</strong> column. They are <em>not</em> “good” and “bad,” and credit doesn’t mean “money for you.” Each type of account goes <strong>up</strong> on one side and <strong>down</strong> on the other:</p>
+  <p lang="fil">Ang <strong>debit</strong> ay ang <strong>kaliwang</strong> column lang. Ang <strong>credit</strong> ay ang <strong>kanang</strong> column. <em>Hindi</em> ibig sabihin ay “maganda” o “masama,” at hindi rin “pera para sa iyo” ang credit. Bawat uri ng account ay <strong>tumataas</strong> sa isang side at <strong>bumababa</strong> sa kabila:</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th><span lang="en">Account type</span><span lang="fil">Uri ng account</span></th><th class="dr"><span lang="en">Goes UP with a…</span><span lang="fil">TUMATAAS sa…</span></th><th class="cr"><span lang="en">Goes DOWN with a…</span><span lang="fil">BUMABABA sa…</span></th></tr></thead>
+    <tbody>
+      <tr><td>Drawings</td><td class="dr"><strong>Debit</strong></td><td>Credit</td></tr>
+      <tr><td>Expenses</td><td class="dr"><strong>Debit</strong></td><td>Credit</td></tr>
+      <tr><td>Assets</td><td class="dr"><strong>Debit</strong></td><td>Credit</td></tr>
+      <tr><td>Liabilities</td><td>Debit</td><td class="cr"><strong>Credit</strong></td></tr>
+      <tr><td>Equity (Owner’s Capital)</td><td>Debit</td><td class="cr"><strong>Credit</strong></td></tr>
+      <tr><td>Revenue (Income)</td><td>Debit</td><td class="cr"><strong>Credit</strong></td></tr>
+    </tbody>
+  </table></div>
+  <div class="box note">
+    <p lang="en"><strong>Memory trick: “DEA-LER.”</strong> <strong>D</strong>rawings, <strong>E</strong>xpenses, <strong>A</strong>ssets go up with a debit. <strong>L</strong>iabilities, <strong>E</strong>quity, <strong>R</strong>evenue go up with a credit.</p>
+    <p lang="fil"><strong>Pantanda: “DEA-LER.”</strong> Ang <strong>D</strong>rawings, <strong>E</strong>xpenses, <strong>A</strong>ssets ay tumataas sa debit. Ang <strong>L</strong>iabilities, <strong>E</strong>quity, <strong>R</strong>evenue ay tumataas sa credit.</p>
+  </div>
+
+  <h2><span lang="en">Everyday examples</span><span lang="fil">Mga pang-araw-araw na halimbawa</span></h2>
+  <p lang="en">For each one, ask two questions: <strong>Which accounts changed?</strong> and <strong>Did each go up or down?</strong> Then use the table.</p>
+  <p lang="fil">Sa bawat isa, dalawang tanong: <strong>Aling mga account ang nagbago?</strong> at <strong>Tumaas ba o bumaba ang bawat isa?</strong> Tapos gamitin ang table.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th><span lang="en">What happened</span><span lang="fil">Ano ang nangyari</span></th><th class="dr">Debit</th><th class="cr">Credit</th></tr></thead>
+    <tbody>
+      <tr><td><span lang="en">A client pays you ₱5,000 for a project</span><span lang="fil">Binayaran ka ng client ng ₱5,000 para sa project</span></td><td class="dr">Cash ₱5,000<br><small><span lang="en">(asset up)</span><span lang="fil">(tumaas ang asset)</span></small></td><td class="cr">Service Income ₱5,000<br><small><span lang="en">(income up)</span><span lang="fil">(tumaas ang kita)</span></small></td></tr>
+      <tr><td><span lang="en">You pay the ₱1,500 internet bill</span><span lang="fil">Binayaran mo ang ₱1,500 na internet bill</span></td><td class="dr">Internet Expense ₱1,500<br><small><span lang="en">(expense up)</span><span lang="fil">(tumaas ang gastos)</span></small></td><td class="cr">Cash ₱1,500<br><small><span lang="en">(asset down)</span><span lang="fil">(bumaba ang asset)</span></small></td></tr>
+      <tr><td><span lang="en">You buy a ₱40,000 laptop and will pay the store next month</span><span lang="fil">Bumili ka ng ₱40,000 na laptop at sa susunod na buwan mo babayaran ang tindahan</span></td><td class="dr">Equipment ₱40,000<br><small><span lang="en">(asset up)</span><span lang="fil">(tumaas ang asset)</span></small></td><td class="cr">Accounts Payable ₱40,000<br><small><span lang="en">(liability up)</span><span lang="fil">(tumaas ang utang)</span></small></td></tr>
+      <tr><td><span lang="en">You take ₱3,000 from the business for personal use</span><span lang="fil">Kumuha ka ng ₱3,000 sa negosyo para sa personal na gamit</span></td><td class="dr">Owner’s Drawings ₱3,000<br><small><span lang="en">(drawings up)</span><span lang="fil">(tumaas ang drawings)</span></small></td><td class="cr">Cash ₱3,000<br><small><span lang="en">(asset down)</span><span lang="fil">(bumaba ang asset)</span></small></td></tr>
+    </tbody>
+  </table></div>
+
+  <h3><span lang="en">Quick check</span><span lang="fil">Quick check</span></h3>
+  <div class="quiz" data-answer="dr">
+    <p><span lang="en">You buy ₱600 of printer ink for the business. <strong>Office Supplies Expense</strong> goes on the…</span><span lang="fil">Bumili ka ng ₱600 na printer ink para sa negosyo. Ang <strong>Office Supplies Expense</strong> ay nasa…</span></p>
+    <div class="btn-row"><button type="button" class="btn ghost small" data-pick="dr">Debit</button><button type="button" class="btn ghost small" data-pick="cr">Credit</button></div>
+    <span class="why-text"><span lang="en">Expenses go up with a debit. (Cash goes down → credit.)</span><span lang="fil">Ang expense ay tumataas sa debit. (Bumaba ang Cash → credit.)</span></span>
+    <div class="result" aria-live="polite"></div>
+  </div>
+  <div class="quiz" data-answer="cr">
+    <p><span lang="en">A client pays you ₱2,000. <strong>Service Income</strong> goes on the…</span><span lang="fil">Binayaran ka ng client ng ₱2,000. Ang <strong>Service Income</strong> ay nasa…</span></p>
+    <div class="btn-row"><button type="button" class="btn ghost small" data-pick="dr">Debit</button><button type="button" class="btn ghost small" data-pick="cr">Credit</button></div>
+    <span class="why-text"><span lang="en">Income goes up with a credit. (Cash goes up → debit.)</span><span lang="fil">Ang income ay tumataas sa credit. (Tumaas ang Cash → debit.)</span></span>
+    <div class="result" aria-live="polite"></div>
+  </div>
+  <div class="quiz" data-answer="cr">
+    <p><span lang="en">You pay a ₱900 bill. What happens to <strong>Cash</strong>?</span><span lang="fil">Nagbayad ka ng ₱900 na bill. Ano ang mangyayari sa <strong>Cash</strong>?</span></p>
+    <div class="btn-row"><button type="button" class="btn ghost small" data-pick="dr">Debit</button><button type="button" class="btn ghost small" data-pick="cr">Credit</button></div>
+    <span class="why-text"><span lang="en">Cash is an asset and it went down, so it’s a credit.</span><span lang="fil">Asset ang Cash at bumaba ito, kaya credit.</span></span>
+    <div class="result" aria-live="polite"></div>
+  </div>
+  <div class="quiz" data-answer="dr">
+    <p><span lang="en">You put ₱10,000 of your savings into the business. <strong>Cash</strong> goes on the…</span><span lang="fil">Nagpasok ka ng ₱10,000 mula sa savings mo sa negosyo. Ang <strong>Cash</strong> ay nasa…</span></p>
+    <div class="btn-row"><button type="button" class="btn ghost small" data-pick="dr">Debit</button><button type="button" class="btn ghost small" data-pick="cr">Credit</button></div>
+    <span class="why-text"><span lang="en">Cash (asset) went up → debit. Owner’s Capital went up → credit. It’s not income!</span><span lang="fil">Tumaas ang Cash (asset) → debit. Tumaas ang Owner’s Capital → credit. Hindi ito kita!</span></span>
+    <div class="result" aria-live="polite"></div>
+  </div>
+
+  <h2><span lang="en">Cash basis vs accrual: when do you record it?</span><span lang="fil">Cash basis vs accrual: kailan mo ito ire-record?</span></h2>
+  <div class="two-col">
+    <div class="card">
+      <h3 style="margin-top:0">💵 <span lang="en">Cash basis</span><span lang="fil">Cash basis</span></h3>
+      <p lang="en">Record income when you <strong>receive</strong> the money, and expenses when you <strong>pay</strong>. Simple, and it matches your bank account.</p>
+      <p lang="fil">I-record ang kita kapag <strong>natanggap</strong> mo na ang pera, at ang gastos kapag <strong>nabayaran</strong> mo na. Simple, at tugma sa bank account mo.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">🧾 <span lang="en">Accrual basis</span><span lang="fil">Accrual basis</span></h3>
+      <p lang="en">Record income when you <strong>earn</strong> it (the work is done and billed), and expenses when you <strong>incur</strong> them — even if no money has moved yet.</p>
+      <p lang="fil">I-record ang kita kapag <strong>kinita</strong> mo na (tapos na ang trabaho at na-bill na), at ang gastos kapag <strong>nagkaroon</strong> ka na nito — kahit wala pang perang gumagalaw.</p>
+    </div>
+  </div>
+  <p lang="en"><strong>Example:</strong> Ana finishes a project and bills ₱6,000 on <strong>Oct 28</strong>. The client pays on <strong>Nov 5</strong>.</p>
+  <p lang="fil"><strong>Halimbawa:</strong> Natapos ni Ana ang project at nag-bill ng ₱6,000 noong <strong>Okt 28</strong>. Nagbayad ang client noong <strong>Nob 5</strong>.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th></th><th><span lang="en">Oct 28 (billed)</span><span lang="fil">Okt 28 (na-bill)</span></th><th><span lang="en">Nov 5 (paid)</span><span lang="fil">Nob 5 (nabayaran)</span></th></tr></thead>
+    <tbody>
+      <tr><td><strong>Cash basis</strong></td><td><span lang="en">No entry yet</span><span lang="fil">Wala pang entry</span></td><td>Dr Cash ₱6,000<br>Cr Service Income ₱6,000</td></tr>
+      <tr><td><strong>Accrual</strong></td><td>Dr Accounts Receivable ₱6,000<br>Cr Service Income ₱6,000</td><td>Dr Cash ₱6,000<br>Cr Accounts Receivable ₱6,000</td></tr>
+    </tbody>
+  </table></div>
+  <p lang="en">Under cash basis the income lands in <strong>November</strong>; under accrual it lands in <strong>October</strong>. Same peso, different month.</p>
+  <p lang="fil">Sa cash basis, sa <strong>Nobyembre</strong> napupunta ang kita; sa accrual, sa <strong>Oktubre</strong>. Parehong piso, ibang buwan.</p>
+  <div class="box note">
+    <p lang="en"><strong>Choose one method and apply it consistently.</strong> Don’t switch back and forth between months — your totals won’t be comparable, and income could get counted twice or not at all. If you’re unsure which method fits you, ask your RDO or an accountant. The practice lab uses the <strong>cash basis</strong>.</p>
+    <p lang="fil"><strong>Pumili ng isang paraan at gamitin ito nang tuloy-tuloy.</strong> Huwag magpalipat-lipat bawat buwan — hindi na maikukumpara ang mga total mo, at pwedeng madoble o hindi mabilang ang kita. Kung hindi ka sigurado kung alin ang bagay sa iyo, magtanong sa RDO mo o sa accountant. Sa practice lab, <strong>cash basis</strong> ang gamit.</p>
+  </div>
+
+  <aside class="box why">
+    <h2>💡 <span lang="en">Why it matters</span><span lang="fil">Bakit ito mahalaga?</span></h2>
+    <ul lang="en">
+      <li>Double entry has a built-in error check: if debits don’t equal credits, something is wrong.</li>
+      <li>Putting things in the right account (expense vs asset vs drawings) changes your income and expense totals.</li>
+      <li>A consistent method means each month’s numbers mean the same thing.</li>
+    </ul>
+    <ul lang="fil">
+      <li>May built-in na error check ang double entry: kapag hindi pantay ang debit at credit, may mali.</li>
+      <li>Ang paglagay sa tamang account (expense vs asset vs drawings) ay nakakaapekto sa total ng kita at gastos mo.</li>
+      <li>Kapag consistent ang paraan, pareho ang ibig sabihin ng mga numero bawat buwan.</li>
+    </ul>
+  </aside>
+  <aside class="box mistakes">
+    <h2>⚠️ <span lang="en">Common mistakes</span><span lang="fil">Mga karaniwang pagkakamali</span></h2>
+    <ul lang="en">
+      <li>Thinking “debit = minus, credit = plus.” It depends on the account type.</li>
+      <li>Recording only one side (e.g., writing the income but not the cash).</li>
+      <li>Recording your own money put into the business as income. It’s capital.</li>
+      <li>Recording personal spending as a business expense. It’s drawings.</li>
+      <li>Recording equipment that lasts for years as this month’s expense.</li>
+      <li>Switching between cash and accrual from month to month.</li>
+    </ul>
+    <ul lang="fil">
+      <li>Akalang “debit = bawas, credit = dagdag.” Depende ito sa uri ng account.</li>
+      <li>Isang side lang ang nire-record (hal. isinulat ang kita pero hindi ang cash).</li>
+      <li>Itinuturing na kita ang sarili mong perang ipinasok sa negosyo. Capital iyon.</li>
+      <li>Itinuturing na business expense ang personal na gastos. Drawings iyon.</li>
+      <li>Itinuturing na gastos ngayong buwan ang equipment na ilang taon gagamitin.</li>
+      <li>Pagpapalipat-lipat sa cash at accrual bawat buwan.</li>
+    </ul>
+  </aside>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Month-end routine · Bookkeeping for First-Timers</title>
+<meta name="description" content="A simple month-end and quarter-end checklist: file documents, total the journals, post to the ledger, reconcile cash, tally gross sales.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect x='7' y='4' width='24' height='32' rx='4' fill='%230d7068'/%3E%3Ccircle cx='29' cy='29' r='8' fill='%23f2b53a'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="assets/js/app.js"></script>
+</head>
+<body>
+<main id="main" class="wrap">
+
+  <h1><span lang="en">Month-end & quarter-end routine</span><span lang="fil">Routine sa katapusan ng buwan at quarter</span></h1>
+  <p class="lead" lang="en">Block one hour at the end of each month. Do the same steps every time. That’s it — that’s the whole secret.</p>
+  <p class="lead" lang="fil">Maglaan ng isang oras sa katapusan ng bawat buwan. Parehong hakbang lagi. Iyon lang — iyon ang buong sikreto.</p>
+
+  <div class="card">
+    <h2 style="margin-top:0">📅 <span lang="en">Every month-end</span><span lang="fil">Tuwing katapusan ng buwan</span></h2>
+    <p><small lang="en">Your ticks are saved in this browser so you can come back to them.</small><small lang="fil">Naka-save sa browser na ito ang mga tsek mo para mabalikan mo.</small></p>
+    <ul class="checklist" data-save="monthly">
+      <li><label><input type="checkbox"><span><strong lang="en">File your documents.</strong><strong lang="fil">I-file ang mga dokumento.</strong> <span lang="en">Gather every invoice you issued, every supplier invoice/receipt, every 2307 and bank/e-wallet statement for the month. Put them in the month’s folder, in date order.</span><span lang="fil">Tipunin ang bawat invoice na in-issue mo, bawat invoice/resibo ng supplier, bawat 2307 at bank/e-wallet statement para sa buwan. Ilagay sa folder ng buwan, ayon sa petsa.</span></span></label></li>
+      <li><label><input type="checkbox"><span><strong lang="en">Check that every document is recorded.</strong><strong lang="fil">I-check kung naka-record ang bawat dokumento.</strong> <span lang="en">Each document should match a journal entry, and each entry should have a document.</span><span lang="fil">Dapat may katapat na journal entry ang bawat dokumento, at may dokumento ang bawat entry.</span></span></label></li>
+      <li><label><input type="checkbox"><span><strong lang="en">Total the journals.</strong><strong lang="fil">I-total ang mga journal.</strong> <span lang="en">Add up the debit and credit columns of each journal. Total debits must equal total credits.</span><span lang="fil">I-total ang debit at credit column ng bawat journal. Dapat pantay ang kabuuang debit at credit.</span></span></label></li>
+      <li><label><input type="checkbox"><span><strong lang="en">Post to the ledger.</strong><strong lang="fil">I-post sa ledger.</strong> <span lang="en">Copy the amounts to each account in the General Ledger and update each running balance.</span><span lang="fil">Kopyahin ang mga halaga sa bawat account sa General Ledger at i-update ang running balance.</span></span></label></li>
+      <li><label><input type="checkbox"><span><strong lang="en">Reconcile cash.</strong><strong lang="fil">I-reconcile ang cash.</strong> <span lang="en">Compare your Cash ledger balance with what you actually have (use the tool below). Find and fix any difference.</span><span lang="fil">Ikumpara ang balance ng Cash sa ledger sa talagang hawak mo (gamitin ang tool sa ibaba). Hanapin at ayusin ang anumang diperensya.</span></span></label></li>
+      <li><label><input type="checkbox"><span><strong lang="en">Write down the month’s totals.</strong><strong lang="fil">Isulat ang mga total ng buwan.</strong> <span lang="en">Gross sales/receipts and total expenses for the month. You’ll need them at quarter-end.</span><span lang="fil">Gross sales/receipts at kabuuang gastos ng buwan. Kakailanganin mo ito sa quarter-end.</span></span></label></li>
+    </ul>
+    <button type="button" class="btn ghost small no-print" data-reset="monthly"><span lang="en">Clear ticks for next month</span><span lang="fil">Burahin ang tsek para sa susunod na buwan</span></button>
+  </div>
+
+  <div class="card no-print" id="recon">
+    <h2 style="margin-top:0">🧮 <span lang="en">Cash reconciliation helper</span><span lang="fil">Pang-reconcile ng cash</span></h2>
+    <p lang="en">“Reconcile” means making sure your books and reality agree. Type in your numbers. Nothing leaves this page and nothing is saved.</p>
+    <p lang="fil">Ang “reconcile” ay pagsiguro na magkatugma ang libro mo at ang totoo. I-type ang mga numero mo. Walang lumalabas sa page na ito at walang sine-save.</p>
+    <div class="field">
+      <label for="rBook"><span lang="en">Cash balance in your ledger (₱)</span><span lang="fil">Cash balance sa ledger mo (₱)</span></label>
+      <input type="text" inputmode="decimal" id="rBook" autocomplete="off" placeholder="36,381.00">
+    </div>
+    <div class="field-row">
+      <div class="field"><label for="rHand"><span lang="en">Cash on hand (₱)</span><span lang="fil">Cash na hawak (₱)</span></label><input type="text" inputmode="decimal" id="rHand" autocomplete="off" placeholder="0"></div>
+      <div class="field"><label for="rBank"><span lang="en">Business bank balance (₱)</span><span lang="fil">Balance sa business bank (₱)</span></label><input type="text" inputmode="decimal" id="rBank" autocomplete="off" placeholder="0"></div>
+      <div class="field"><label for="rEw"><span lang="en">Business e-wallet balance (₱)</span><span lang="fil">Balance sa business e-wallet (₱)</span></label><input type="text" inputmode="decimal" id="rEw" autocomplete="off" placeholder="0"></div>
+    </div>
+    <div class="result" id="rOut" aria-live="polite"></div>
+    <details>
+      <summary><span lang="en">If it doesn’t match, check these</span><span lang="fil">Kung hindi tugma, tingnan ang mga ito</span></summary>
+      <ul lang="en"><li>A bank charge, transfer fee or interest you haven’t recorded.</li><li>A payment received or made that’s missing from the journal.</li><li>An amount typed with swapped digits (₱1,690 vs ₱1,960). If the difference divides evenly by 9, this is a likely cause.</li><li>Personal money mixed into the business account.</li></ul>
+      <ul lang="fil"><li>Bank charge, transfer fee o interest na hindi pa naire-record.</li><li>Bayad na natanggap o ibinayad na wala sa journal.</li><li>Halagang nagkapalit ang digit (₱1,690 vs ₱1,960). Kung ang diperensya ay eksaktong nahahati sa 9, malamang ito ang dahilan.</li><li>Personal na perang nahalo sa business account.</li></ul>
+    </details>
+  </div>
+
+  <div class="card">
+    <h2 style="margin-top:0">🗓️ <span lang="en">Every quarter-end</span><span lang="fil">Tuwing katapusan ng quarter</span></h2>
+    <ul class="checklist" data-save="quarterly">
+      <li><label><input type="checkbox"><span><strong lang="en">Finish the month-end routine for the last month first.</strong><strong lang="fil">Tapusin muna ang month-end routine ng huling buwan.</strong></span></label></li>
+      <li><label><input type="checkbox"><span><strong lang="en">Tally gross sales/receipts for the quarter.</strong><strong lang="fil">I-total ang gross sales/receipts ng quarter.</strong> <span lang="en">Add the monthly totals for the three months. Use full invoice amounts, including any amount clients withheld.</span><span lang="fil">Pagsamahin ang buwanang total ng tatlong buwan. Gamitin ang buong halaga ng invoice, kasama ang kinaltas ng kliyente.</span></span></label></li>
+      <li><label><input type="checkbox"><span><strong lang="en">Total the quarter’s expenses</strong><strong lang="fil">I-total ang gastos ng quarter</strong> <span lang="en">from your expense ledger accounts.</span><span lang="fil">mula sa mga expense account sa ledger mo.</span></span></label></li>
+      <li><label><input type="checkbox"><span><strong lang="en">Collect and check your 2307s.</strong><strong lang="fil">Tipunin at i-check ang mga 2307.</strong> <span lang="en">Every amount withheld in your books should have a 2307. List any you’re still waiting for and follow up.</span><span lang="fil">Dapat may 2307 ang bawat halagang kinaltas sa libro mo. Ilista ang mga hinihintay pa at i-follow up.</span></span></label></li>
+      <li><label><input type="checkbox"><span><strong lang="en">Keep a one-page quarter summary</strong><strong lang="fil">Gumawa ng isang pahinang summary ng quarter</strong> <span lang="en">(gross sales/receipts, expenses, 2307 total) in your records.</span><span lang="fil">(gross sales/receipts, gastos, total ng 2307) at itago sa records mo.</span></span></label></li>
+    </ul>
+    <button type="button" class="btn ghost small no-print" data-reset="quarterly"><span lang="en">Clear ticks for next quarter</span><span lang="fil">Burahin ang tsek para sa susunod na quarter</span></button>
+  </div>
+
+  <div class="rule">
+    <p lang="en">Using the Optional Standard Deduction? You must <strong>still keep records of gross sales</strong>.</p>
+    <p lang="fil">Optional Standard Deduction ba ang gamit mo? Kailangan mo <strong>pa ring mag-record ng gross sales</strong>.</p>
+    <span class="src">1701-MS Guidelines</span>
+  </div>
+  <p><small lang="en">This guide does not cover filing deadlines, which return form applies to you, or how to fill it out.</small><small lang="fil">Hindi sakop ng gabay na ito ang mga deadline ng filing, aling return form ang para sa iyo, o kung paano ito sagutan.</small></p>
+
+  <aside class="box why">
+    <h2>💡 <span lang="en">Why it matters</span><span lang="fil">Bakit ito mahalaga?</span></h2>
+    <ul lang="en">
+      <li>Small monthly check-ups catch mistakes while you still remember what happened.</li>
+      <li>If every month is closed, quarter-end is just adding three numbers.</li>
+      <li>Reconciling cash is the best way to spot a missing entry.</li>
+    </ul>
+    <ul lang="fil">
+      <li>Sa maliit na buwanang check-up, nahuhuli ang mali habang naaalala mo pa ang nangyari.</li>
+      <li>Kung sarado na ang bawat buwan, pagsasama na lang ng tatlong numero ang quarter-end.</li>
+      <li>Ang pag-reconcile ng cash ang pinakamagandang paraan para makita ang nawawalang entry.</li>
+    </ul>
+  </aside>
+  <aside class="box mistakes">
+    <h2>⚠️ <span lang="en">Common mistakes</span><span lang="fil">Mga karaniwang pagkakamali</span></h2>
+    <ul lang="en">
+      <li>Skipping month-end and doing all three months at once.</li>
+      <li>Using the cash received instead of gross sales/receipts (forgetting withheld amounts).</li>
+      <li>Ignoring a small cash difference — small differences often point to a missing entry.</li>
+      <li>Not following up missing 2307s until it’s too late.</li>
+    </ul>
+    <ul lang="fil">
+      <li>Nilalaktawan ang month-end at sabay-sabay ginagawa ang tatlong buwan.</li>
+      <li>Ang cash na natanggap ang ginagamit imbes na gross sales/receipts (nakakalimutan ang kinaltas).</li>
+      <li>Binabalewala ang maliit na diperensya sa cash — madalas, senyales ito ng nawawalang entry.</li>
+      <li>Hindi agad nafo-follow up ang kulang na 2307.</li>
+    </ul>
+  </aside>
+
+</main>
+<script>
+/* Cash reconciliation helper — calculation only, nothing saved or sent */
+(function () {
+  var box = document.getElementById('recon');
+  if (!box) return;
+  function n(id) { var v = document.getElementById(id).value.replace(/[₱,\s]/g, ''); var x = parseFloat(v); return isFinite(x) ? x : null; }
+  function peso(x) { return (window.BFT ? window.BFT.peso(x) : '₱' + x.toFixed(2)); }
+  function b(en, fil) { return '<span lang="en">' + en + '</span><span lang="fil">' + fil + '</span>'; }
+  box.addEventListener('input', function () {
+    var out = document.getElementById('rOut');
+    var book = n('rBook');
+    var actual = (n('rHand') || 0) + (n('rBank') || 0) + (n('rEw') || 0);
+    if (book === null) { out.className = 'result'; out.innerHTML = ''; return; }
+    var diff = Math.round((actual - book) * 100) / 100;
+    if (diff === 0) {
+      out.className = 'result good';
+      out.innerHTML = b('✓ It matches! Actual cash ' + peso(actual) + ' = books ' + peso(book) + '.', '✓ Tugma! Totoong cash ' + peso(actual) + ' = libro ' + peso(book) + '.');
+    } else {
+      out.className = 'result bad';
+      out.innerHTML = b('Actual cash ' + peso(actual) + ' vs books ' + peso(book) + '. Difference: <strong>' + peso(Math.abs(diff)) + '</strong> ' + (diff > 0 ? '(you have MORE than your books show — maybe an unrecorded receipt).' : '(you have LESS than your books show — maybe an unrecorded payment or fee).'),
+                        'Totoong cash ' + peso(actual) + ' vs libro ' + peso(book) + '. Diperensya: <strong>' + peso(Math.abs(diff)) + '</strong> ' + (diff > 0 ? '(MAS MARAMI ang hawak mo kaysa sa libro — baka may hindi na-record na natanggap).' : '(MAS KAUNTI ang hawak mo kaysa sa libro — baka may hindi na-record na bayad o fee).'));
+    }
+  });
+})();
+</script>
+</body>
+</html>
