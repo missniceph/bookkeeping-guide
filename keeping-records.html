@@ -5,7 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Keeping records · Bookkeeping for First-Timers</title>
 <meta name="description" content="How long to keep books and documents, how to organize physical and digital files, and a naming convention for scans.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect x='7' y='4' width='24' height='32' rx='4' fill='%230d7068'/%3E%3Ccircle cx='29' cy='29' r='8' fill='%23f2b53a'/%3E%3C/svg%3E">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0d7068">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bookkeeping for First-Timers">
+<meta property="og:title" content="Keeping records · Bookkeeping for First-Timers">
+<meta property="og:description" content="How long to keep books and documents, how to organize physical and digital files, and a naming convention for scans.">
+<meta property="og:url" content="https://missniceph.github.io/bookkeeping-guide/keeping-records.html">
+<meta property="og:image" content="https://missniceph.github.io/bookkeeping-guide/assets/img/share-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Bookkeeping for First-Timers: a friendly guide to BIR books of accounts, in English and Filipino, by @missniceph">
+<meta property="og:locale" content="en_PH">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="assets/css/style.css">
 <script src="assets/js/app.js"></script>
 </head>
@@ -120,7 +133,7 @@
     <span id="nCopied" role="status" style="margin-left:8px;font-weight:700;color:var(--good)"></span>
   </div>
 
-  <aside class="box why">
+  <section class="box why">
     <h2>💡 <span lang="en">Why it matters</span><span lang="fil">Bakit ito mahalaga?</span></h2>
     <ul lang="en">
       <li>You must be able to produce your books and documents for 5 years.</li>
@@ -132,8 +145,8 @@
       <li>Kapag predictable ang sistema, mahahanap mo ang kahit anong dokumento sa loob ng isang minuto.</li>
       <li>Pinoprotektahan ka ng backup laban sa baha, sunog, at sirang cellphone.</li>
     </ul>
-  </aside>
-  <aside class="box mistakes">
+  </section>
+  <section class="box mistakes">
     <h2>⚠️ <span lang="en">Common mistakes</span><span lang="fil">Mga karaniwang pagkakamali</span></h2>
     <ul lang="en">
       <li>One giant “Receipts” shoebox with no order.</li>
@@ -149,7 +162,7 @@
       <li>Iisang kopya lang ng lahat, sa iisang cellphone.</li>
       <li>Pagtapon ng lumang records nang hindi tinitingnan kung gaano katagal dapat itago.</li>
     </ul>
-  </aside>
+  </section>
 
 </main>
 <script>
@@ -157,7 +170,7 @@
 (function () {
   var box = document.getElementById('namer');
   if (!box) return;
-  function clean(s) { return s.trim().replace(/[^A-Za-z0-9ñÑ\-]+/g, '').slice(0, 40); }
+  function clean(s) { return s.normalize('NFD').replace(/[\u0300-\u0302\u0304-\u036f]/g, '').normalize('NFC').trim().replace(/[^A-Za-z0-9ñÑ\-]+/g, '').slice(0, 40); }
   function build() {
     var d = document.getElementById('nDate').value || 'YYYY-MM-DD';
     var type = document.getElementById('nType').value;

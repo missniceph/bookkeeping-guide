@@ -153,7 +153,7 @@
   function renderEntry(tx) {
     var lang = B.lang();
     var isDone = !!done[tx.id];
-    var html = '<div class="card" id="txCard">' +
+    var html = '<div class="card" id="txCard" tabindex="-1">' +
       '<p class="tx-date">' + b('Transaction ' + tx.id + ' of ' + TX.length, 'Transaksyon ' + tx.id + ' sa ' + TX.length) + ' · ' + fmtDate(tx.date) + ', 2026</p>' +
       '<p class="tx-story">' + b(esc(tx.en), esc(tx.fil)) + '</p>' +
       '<p><small>' + b(esc(tx.doc.en), esc(tx.doc.fil)) + '</small></p>';
@@ -170,7 +170,7 @@
 
     html += '<h3 style="margin-top:6px">' + b('Your journal entry', 'Ang journal entry mo') + '</h3>';
     rowsFor(tx.id).forEach(function (r, i) {
-      html += '<div class="entry-row">' +
+      html += '<div class="entry-row" role="group" aria-label="' + (lang === 'fil' ? 'Linya ' : 'Line ') + (i + 1) + '">' +
         '<label class="acct">' + b('Account', 'Account') +
           '<select data-row="' + i + '" data-f="acct">' + accountOptions(r.acct) + '</select></label>' +
         '<label>' + b('Debit or Credit?', 'Debit o Credit?') +
@@ -269,7 +269,7 @@
     if (!ids.length) return '<p class="empty">' + b('No ledger accounts yet.', 'Wala pang ledger account.') + '</p>';
     return '<div class="ledgers">' + ids.map(function (id) {
       var run = 0, normalDr = NORMAL_DEBIT[ACC[id].type];
-      var h = '<div class="ledger"><h4>' + acctName(id) + ' <small class="tag">' + (normalDr ? b('normal balance: debit', 'normal balance: debit') : b('normal balance: credit', 'normal balance: credit')) + '</small></h4>' +
+      var h = '<div class="ledger"><h3>' + acctName(id) + ' <small class="tag">' + (normalDr ? b('normal balance: debit', 'normal balance: debit') : b('normal balance: credit', 'normal balance: credit')) + '</small></h3>' +
         '<div class="table-wrap"><table><thead><tr><th>' + b('Date', 'Petsa') + '</th><th>Ref</th><th class="num">Dr</th><th class="num">Cr</th><th class="num">' + b('Balance', 'Balanse') + '</th></tr></thead><tbody>';
       led[id].forEach(function (e) {
         run += normalDr ? e.dr - e.cr : e.cr - e.dr;
@@ -341,7 +341,7 @@
     var warn = keyProblems.length ? '<div class="box warn"><strong>Answer key problem (for the editor):</strong><ul><li>' + keyProblems.map(esc).join('</li><li>') + '</li></ul></div>' : '';
     var doneCount = postedTx().length;
     root.innerHTML = warn +
-      '<div class="lab-grid"><div class="sticky">' +
+      '<div class="lab-grid"><div>' +
         '<h2 style="margin-top:0">' + b('Record Ana’s transactions', 'I-record ang mga transaksyon ni Ana') + '</h2>' +
         '<p>' + b(doneCount + ' of ' + TX.length + ' done. Tap a number to jump.', doneCount + ' sa ' + TX.length + ' ang tapos. Pindutin ang numero para lumipat.') + '</p>' +
         renderChips() + renderEntry(tx) +
@@ -357,6 +357,22 @@
       '<section id="monthEnd" class="card"><h2>' + b('Month-end totals', 'Month-end totals') + '</h2>' + renderMonthEnd() + '</section>';
     if (!done[tx.id]) updateLiveTotals(tx);
     justPosted = null;
+    if (B.labelTables) B.labelTables(root);
+  }
+
+  /* Re-rendering replaces the controls, so remember which one had keyboard focus and put it back. */
+  function focusKey(el) {
+    if (!el || !root.contains(el)) return null;
+    if (el.id) return '#' + el.id;
+    if (el.hasAttribute('data-row')) return '[data-row="' + el.getAttribute('data-row') + '"][data-f="' + el.getAttribute('data-f') + '"]';
+    if (el.hasAttribute('data-go')) return '.tx-chips [data-go="' + el.getAttribute('data-go') + '"]';
+    return null;
+  }
+  function renderKeepFocus(selector) {
+    var key = selector || focusKey(document.activeElement);
+    render();
+    var target = key && root.querySelector(key);
+    if (target) target.focus({ preventScroll: true });
   }
 
   root.addEventListener('change', onInput);
@@ -378,10 +394,10 @@
       focusCard();
     } else if (el.id === 'addRow') {
       rowsFor(current).push({ acct: '', side: '', amt: '' });
-      render();
+      renderKeepFocus('[data-row="' + (rowsFor(current).length - 1) + '"][data-f="acct"]');
     } else if (el.hasAttribute('data-rm')) {
       rowsFor(current).splice(+el.getAttribute('data-rm'), 1);
-      render();
+      renderKeepFocus('[data-row="0"][data-f="acct"]');
     } else if (el.id === 'hintBtn') {
       feedback[current] = '<div class="result info">💡 ' + b(esc(tx.hint.en), esc(tx.hint.fil)) + '</div>';
       document.getElementById('fb').innerHTML = feedback[current];
@@ -402,7 +418,7 @@
     } else if (el.hasAttribute('data-redo')) {
       delete done[current]; save();
       rows[current] = null; feedback[current] = '';
-      render();
+      renderKeepFocus('[data-row="0"][data-f="acct"]');
     } else if (el.id === 'resetLab') {
       // Two-tap confirmation built into the page (browser confirm dialogs are blocked in some viewers)
       if (el.getAttribute('data-armed') === '1') {
@@ -416,11 +432,15 @@
       }
     }
   });
+  /* After moving to another transaction or posting one, send focus (and screen readers) to the card. */
   function focusCard() {
     var c = document.getElementById('txCard');
-    if (c && c.scrollIntoView && window.innerWidth < 1000) c.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    if (!c) return;
+    c.focus({ preventScroll: true });
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (c.scrollIntoView && window.innerWidth < 1000) c.scrollIntoView({ block: 'start', behavior: reduce ? 'auto' : 'smooth' });
   }
 
-  document.addEventListener('bft:lang', render);
+  document.addEventListener('bft:lang', function () { renderKeepFocus(); });
   render();
 })();

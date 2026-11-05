@@ -91,8 +91,8 @@
           '<span><span class="brand-name">Bookkeeping for First-Timers</span><small>Nice to Know · @missniceph</small></span></a>' +
         '<div class="controls">' +
           '<div class="seg" role="group" aria-label="Language / Wika">' +
-            '<button type="button" data-setlang="en" title="English">EN</button>' +
-            '<button type="button" data-setlang="fil" title="Filipino">FIL</button>' +
+            '<button type="button" data-setlang="en" title="English" aria-label="English">EN</button>' +
+            '<button type="button" data-setlang="fil" title="Filipino" aria-label="Filipino">FIL</button>' +
           '</div>' +
           '<button type="button" class="icon-btn" id="themeBtn"></button>' +
         '</div>' +
@@ -144,6 +144,7 @@
         if (v != null) el.setAttribute(attr, v);
       });
     });
+    labelTables();
     refreshProgress();
   }
 
@@ -155,7 +156,7 @@
     if (fill) fill.style.width = Math.round((count / MODULES.length) * 100) + '%';
     if (text) {
       text.textContent = lang === 'fil'
-        ? count + ' sa ' + MODULES.length + ' module ang tapos'
+        ? 'Tapos: ' + count + ' sa ' + MODULES.length + ' na module'
         : count + ' of ' + MODULES.length + ' modules done';
     }
     document.querySelectorAll('[data-module-link]').forEach(function (a) {
@@ -183,11 +184,13 @@
     var m = MODULES[idx];
 
     // Stepper (progress tracker) at the top
-    var steps = '<ol class="stepper" aria-label="Modules">';
+    var steps = '<ol class="stepper" data-i18n-attr="aria-label" data-en-aria-label="All modules" data-fil-aria-label="Lahat ng module">';
     MODULES.forEach(function (mm, i) {
+      var en = 'Module ' + (i + 1) + ': ' + mm.en, fil = 'Module ' + (i + 1) + ': ' + mm.fil;
       steps += '<li><a href="' + mm.file + '" data-module-link="' + mm.file + '"' +
         (i === idx ? ' aria-current="page"' : '') +
-        ' title="' + esc(mm.en) + ' / ' + esc(mm.fil) + '">' + (i + 1) + '</a></li>';
+        ' data-i18n-attr="aria-label,title" data-en-aria-label="' + esc(en) + '" data-fil-aria-label="' + esc(fil) + '"' +
+        ' data-en-title="' + esc(en) + '" data-fil-title="' + esc(fil) + '">' + (i + 1) + '</a></li>';
     });
     steps += '</ol>';
     var eyebrow = '<p class="eyebrow">' + b('Module ' + (idx + 1) + ' of ' + MODULES.length, 'Module ' + (idx + 1) + ' sa ' + MODULES.length) + '</p>';
@@ -197,7 +200,9 @@
     var prev = MODULES[idx - 1], next = MODULES[idx + 1];
     var pager = document.createElement('nav');
     pager.className = 'pager';
-    pager.setAttribute('aria-label', 'Module navigation');
+    pager.setAttribute('data-i18n-attr', 'aria-label');
+    pager.setAttribute('data-en-aria-label', 'Back and next');
+    pager.setAttribute('data-fil-aria-label', 'Bumalik at susunod');
     pager.innerHTML =
       '<label class="done-toggle"><input type="checkbox" id="doneToggle" data-file="' + m.file + '"> ' +
         b('I’m done with this module', 'Tapos ko na ang module na ito') + '</label>' +
@@ -222,13 +227,25 @@
           b('General information only, not tax or accounting advice. Your RDO will confirm which books you need.',
             'Pangkalahatang impormasyon lamang ito, hindi tax o accounting advice. Ang RDO mo ang magkukumpirma kung aling mga libro ang kailangan mo.') +
         '</p>' +
-        '<p><strong>' + b('As of November 2026', 'Updated hanggang Nobyembre 2026') + '</strong></p>' +
-        '<p>' + b('Made by @missniceph (“Nice to Know”). Not affiliated with the BIR.',
-                  'Gawa ni @missniceph (“Nice to Know”). Walang kaugnayan sa BIR.') + '</p>' +
+        '<p><strong>' + b('As of November 2026', 'Updated noong Nobyembre 2026') + '</strong></p>' +
+        '<p>' + b('Made by', 'Gawa ni') + ' <a href="https://www.instagram.com/missniceph/" rel="noopener" target="_blank">@missniceph on Instagram<span class="sr-only"> ' + b('(opens in a new tab)', '(magbubukas sa bagong tab)') + '</span></a> (“Nice to Know”). ' +
+          b('Not affiliated with the BIR.', 'Walang kaugnayan sa BIR.') + '</p>' +
         '<p>' + b('Privacy: no tracking, no accounts. Anything you type in the practice tools stays on this page and is never sent anywhere. Your progress is saved only in this browser.',
-                  'Privacy: walang tracking, walang account. Lahat ng ita-type mo sa practice tools ay nasa page lang na ito at hindi ipinapadala kahit saan. Ang progress mo ay naka-save lang sa browser na ito.') + '</p>' +
+                  'Privacy: walang tracking at walang kailangang account. Lahat ng ita-type mo sa practice tools ay dito lang sa page at hindi ipinapadala kahit saan. Sa browser mo lang naka-save ang progress mo.') + '</p>' +
       '</div>';
     document.body.appendChild(f);
+  }
+
+  /* ---- Wide tables scroll sideways on phones: make each scroll box reachable by keyboard
+     and give it a name screen readers can announce (taken from the table's visible headers). ---- */
+  function labelTables(scope) {
+    (scope || document).querySelectorAll('.table-wrap').forEach(function (w) {
+      w.setAttribute('tabindex', '0');
+      w.setAttribute('role', 'region');
+      var head = w.querySelector('tr');
+      var text = head ? head.innerText.replace(/\s+/g, ' ').trim() : '';
+      w.setAttribute('aria-label', (lang === 'fil' ? 'Talahanayan: ' : 'Table: ') + text);
+    });
   }
 
   /* ---- Saved checklists: <ul class="checklist" data-save="key"> with checkboxes ---- */
@@ -289,6 +306,7 @@
 
   window.BFT = {
     store: store,
+    labelTables: labelTables,
     MODULES: MODULES,
     b: b,
     t: t,
